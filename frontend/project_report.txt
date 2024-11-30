@@ -1,0 +1,289 @@
+=== Project Report ===
+Generated on: Lör 30 Nov 2024 14:55:10 CET
+
+=== Folder Structure (src/) ===
+src
+  components
+  pages
+
+=== File Contents ===
+
+PWD (src/App.tsx)
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import Menu from './pages/Menu';
+import Orders from './pages/Orders';
+import Settings from './pages/Settings';
+
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/meny" element={<Menu />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+        <Navigation />
+      </div>
+    </Router>
+  );
+};
+
+export default App;
+
+------------------------------------
+
+PWD (src/main.tsx)
+
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.tsx'
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
+
+------------------------------------
+
+PWD (src/index.css)
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  --green: #2a5146;
+  --red: #d13d3d;
+  --background: #ffffff;
+
+  color-scheme: light dark;
+  color: var(--green);
+  background-color: var(--background);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+a {
+  font-weight: 500;
+  color: var(--red);
+  text-decoration: inherit;
+}
+
+button {
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: var(--green);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--red);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--green);
+}
+
+.nav-item {
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-item svg {
+  font-size: 1.5rem;
+}
+
+/* Bottom navigation styles */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--green);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+}
+
+.nav-item {
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-item svg {
+  font-size: 1.5rem;
+}
+
+.nav-item button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Page container styles */
+.page-container {
+  background-color: var(--green);
+  color: #ffffff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+------------------------------------
+
+PWD (src/components/Navigation.tsx)
+
+import { Link } from 'react-router-dom';
+import { FaHome, FaPizzaSlice, FaClipboardList, FaCog, FaQrcode } from 'react-icons/fa';
+
+const Navigation = () => {
+  const handleQRCodeClick = () => {
+    alert('Open camera!');
+  };
+
+  return (
+    <nav className="bottom-nav">
+      <Link to="/" className="nav-item">
+        <FaHome />
+        Home
+      </Link>
+      <Link to="/meny" className="nav-item">
+        <FaPizzaSlice />
+        Menu
+      </Link>
+      <button onClick={handleQRCodeClick} className="nav-item">
+        <FaQrcode />
+        QR Code
+      </button>
+      <Link to="/orders" className="nav-item">
+        <FaClipboardList />
+        Orders
+      </Link>
+      <Link to="/settings" className="nav-item">
+        <FaCog />
+        Settings
+      </Link>
+    </nav>
+  );
+};
+
+export default Navigation;
+
+------------------------------------
+
+PWD (src/vite-env.d.ts)
+
+/// <reference types="vite/client" />
+
+------------------------------------
+
+PWD (src/pages/Settings.tsx)
+
+const Settings = () => {
+  return (
+    <div className="page-container">
+      <h1>Settings Page</h1>
+      <p>This is a placeholder for the Settings page.</p>
+    </div>
+  );
+};
+
+export default Settings;
+
+------------------------------------
+
+PWD (src/pages/Stamps.tsx)
+
+
+------------------------------------
+
+PWD (src/pages/Home.tsx)
+
+const Home = () => {
+  return (
+    <div className="page-container">
+      <h1>Home Page</h1>
+      <p>This is a placeholder for the Home page.</p>
+    </div>
+  );
+};
+
+export default Home;
+
+------------------------------------
+
+PWD (src/pages/Menu.tsx)
+
+const Menu = () => {
+  return (
+    <div className="page-container">
+      <h1>Menu Page</h1>
+      <p>This is a placeholder for the Menu page.</p>
+    </div>
+  );
+};
+
+export default Menu;
+
+------------------------------------
+
+PWD (src/pages/Orders.tsx)
+
+const Orders = () => {
+  return (
+    <div className="page-container">
+      <h1>Orders Page</h1>
+      <p>This is a placeholder for the Orders page.</p>
+    </div>
+  );
+};
+
+export default Orders;
+
+------------------------------------
+
